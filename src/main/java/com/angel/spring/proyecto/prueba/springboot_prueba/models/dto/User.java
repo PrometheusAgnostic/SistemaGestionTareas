@@ -1,6 +1,5 @@
 package com.angel.spring.proyecto.prueba.springboot_prueba.models.dto;
 
-
 public class User {
 
     private Long id_User;

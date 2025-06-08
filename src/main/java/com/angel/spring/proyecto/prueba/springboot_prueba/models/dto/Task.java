@@ -6,7 +6,7 @@ public class Task {
     private String nameTask;
     private String startDate;
     private String endDate;
-    private String status;
+    private TaskStatus status;
     private String description;
     private byte[] fileData;
     private String fileName;
@@ -36,11 +36,11 @@ public class Task {
         this.endDate = endDate;
     }
 
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 
@@ -82,6 +82,10 @@ public class Task {
 
     public void setFileType(String fileType) {
         this.fileType = fileType;
+    }
+
+    public enum TaskStatus{
+        PENDING, IN_PROGRESS, COMPLETED, CANCELLED
     }
 
 }

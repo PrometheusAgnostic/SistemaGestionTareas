@@ -63,7 +63,6 @@ public class ImpRepositoryUser implements RepositoryUser {
     public Optional<User> findById(Long id_User) {
         try(PreparedStatement ps = dataSource.getConnection().prepareStatement(queryFindByIdUser)) {
             ps.setLong(1, id_User);
-            // Aquí deberías ejecutar la consulta y mapear el resultado a un objeto User
             ps.executeQuery();
             ResultSet rs = ps.getResultSet();
             if (rs.next()) {
@@ -86,7 +85,7 @@ public class ImpRepositoryUser implements RepositoryUser {
     @Override
     public Optional<User> findByUsername(String username) {
         try(PreparedStatement ps = dataSource.getConnection().prepareStatement(queryFindByUsernameUser)){
-        ps.setString(0, username);
+        ps.setString(1, username);
         ps.executeQuery();
         ResultSet rs = ps.getResultSet();
         while (rs.next()) {
@@ -107,7 +106,7 @@ public class ImpRepositoryUser implements RepositoryUser {
     @Override
     public Optional<User> findByEmail(String email) {
         try(PreparedStatement ps = dataSource.getConnection().prepareStatement(queryFindByEmailUser)){
-        ps.setString(0, email);
+        ps.setString(1, email);
         ps.executeQuery();
         ResultSet rs = ps.getResultSet();
         while(rs.next()){

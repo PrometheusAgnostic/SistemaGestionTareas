@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+
 import com.angel.spring.proyecto.prueba.springboot_prueba.models.dto.User;
 import com.angel.spring.proyecto.prueba.springboot_prueba.models.dto.UserDto;
 import com.angel.spring.proyecto.prueba.springboot_prueba.repository.interfaces.RepositoryUser;
@@ -33,29 +34,22 @@ public class ImpServiceUser implements UserService {
     }
 
     @Override
-    public UserDto findById(Long id_User) {
-        Optional<User> user = repositoryUser.findById(id_User);
-        if (user.isPresent()) {
-            return userMapper.toDto(user.get());
-        }
-        return null;
+    public Optional<UserDto> findById(Long id_User) {
+       return repositoryUser.findById(id_User)
+               .map(userMapper::toDto);
+               
     }
 
     @Override
-    public UserDto findByUsername(String username) {
-        Optional<User> user = repositoryUser.findByUsername(username);
-        if (user.isPresent()) {
-            return userMapper.toDto(user.get());
-        }
-        return null;
+    public Optional<UserDto> findByUsername(String username) {
+        return repositoryUser.findByUsername(username)
+                .map(userMapper::toDto);
     }
 
     @Override
-    public UserDto findByEmail(String email) {
-        Optional<User> user = repositoryUser.findByEmail(email);
-        if (user.isPresent()) {
-            return userMapper.toDto(user.get());
-        }
-        return null;
+    public Optional<UserDto> findByEmail(String email) {
+        return repositoryUser.findByEmail(email)
+                .map(userMapper::toDto);
     }
+
 }

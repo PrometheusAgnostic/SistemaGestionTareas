@@ -18,7 +18,7 @@ public class ControllerExcepctionGeneral {
 @ExceptionHandler(NoResourceFoundException.class)
 public ResponseEntity<Error> notFound(NoResourceFoundException e) {
    Error dtoError = new Error();
-   dtoError.setMessage("Pagina inexistente");
+   dtoError.setMessage("Pagina no encontrada");
    dtoError.setStatus(HttpStatus.NOT_FOUND.value());
    dtoError.setExceptionMessage(e.getMessage());
    dtoError.setDateError(new Date());

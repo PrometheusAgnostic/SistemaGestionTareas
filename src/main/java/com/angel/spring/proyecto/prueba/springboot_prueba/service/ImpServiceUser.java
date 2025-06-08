@@ -19,8 +19,8 @@ public class ImpServiceUser implements UserService {
     private final UserMapper userMapper;
 
     public ImpServiceUser(RepositoryUser repositoryUser, UserMapper userMapper) {
-        this.userMapper = userMapper;
         this.repositoryUser = repositoryUser;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -30,26 +30,22 @@ public class ImpServiceUser implements UserService {
             return userMapper.toDto(userSaved);
         }
         return null;
-
     }
 
     @Override
     public UserDto findById(Long id_User) {
         Optional<User> user = repositoryUser.findById(id_User);
         if (user.isPresent()) {
-            UserDto userDto = userMapper.toDto(user.get());
-            return userDto;
+            return userMapper.toDto(user.get());
         }
         return null;
-
     }
 
     @Override
     public UserDto findByUsername(String username) {
         Optional<User> user = repositoryUser.findByUsername(username);
         if (user.isPresent()) {
-            UserDto userDto = userMapper.toDto(user.get());
-            return userDto;
+            return userMapper.toDto(user.get());
         }
         return null;
     }
@@ -58,8 +54,7 @@ public class ImpServiceUser implements UserService {
     public UserDto findByEmail(String email) {
         Optional<User> user = repositoryUser.findByEmail(email);
         if (user.isPresent()) {
-          UserDto userDto = userMapper.toDto(user.get());
-            return userDto;
+            return userMapper.toDto(user.get());
         }
         return null;
     }

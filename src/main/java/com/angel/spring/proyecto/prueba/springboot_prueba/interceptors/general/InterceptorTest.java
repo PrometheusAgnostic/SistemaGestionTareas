@@ -31,7 +31,7 @@ public class InterceptorTest implements HandlerInterceptor {
         request.setAttribute("start", timeStart);
 
         Random random = new Random();
-        Long timeResearch = random.nextLong(1900000000);
+        Long timeResearch = random.nextLong(500);
         Thread.sleep(timeResearch);
         return true;
     }
